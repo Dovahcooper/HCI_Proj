@@ -7,9 +7,9 @@ using Ardunity;
 
 public class Player : MonoBehaviour
 {
-    float speed = 25f;
-    public float firstJump = 15f;
-    private float secondJump = 10f;
+    float speed = 50f;
+    public float firstJump = 100f;
+    private float secondJump = 75f;
 
     public Vector2 move_input;
     public Rigidbody2D playerBody;
@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
         controller = GameObject.FindGameObjectWithTag("Ardunity").GetComponent<ArdunityApp>();
         controllerX = GameObject.FindGameObjectWithTag("PlayerX").GetComponent<AnalogInput>();
         controllerButton = GameObject.FindGameObjectWithTag("PlayerButton").GetComponent<DigitalInput>();
+
+        canJump = true;
     }
 
     // Update is called once per frame
@@ -57,6 +59,11 @@ public class Player : MonoBehaviour
         {
             PlayerJump();
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            PlayerDash();
+        }
     }
 
     void ControllerInputs()
@@ -66,19 +73,26 @@ public class Player : MonoBehaviour
         {
             PlayerJump();
         }
+
+        if(XInput.GetKeyPressed(0, (int)Buttons.RTrig))
+        {
+            PlayerDash();
+        }
     }
 
     void ArduinoInputs()
     {
         ArduinoMovement(move_input);
         
-        if(contBut && !controllerButton.Value)
+        if(!contBut && controllerButton.Value)
         {
             if (canJump)
                 PlayerJump();
             else
                 PlayerDash();
         }
+
+        contBut = controllerButton.Value;
     }
 
     void KeyboardMovement(Vector2 moveInput)
@@ -112,28 +126,33 @@ public class Player : MonoBehaviour
     {
         playerBody.velocity = moveInput * speed * Time.fixedDeltaTime;
 
-        if(moveInput.x < 0f)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
+        //if(moveInput.x < 0f)
+        //{
+        //    GetComponentInChildren<SpriteRenderer>().flipX = true;
+        //}
+        //else
+        //{
+        //    GetComponentInChildren<SpriteRenderer>().flipX = false;
+        //}
     }
 
     void PlayerJump()
     {
-        if (!jumping)
+        if (canJump)
         {
-            playerBody.AddForce(firstJump * Vector2.up, ForceMode2D.Impulse);
-            jumping = true;
+            if (!jumping)
+            {
+                playerBody.velocity += secondJump * Vector2.up;
+                //playerBody.AddForce(firstJump * Vector2.up, ForceMode2D.Impulse);
+                jumping = true;
+            }
+            else
+            {
+                playerBody.velocity += firstJump * Vector2.up;
+                //playerBody.AddForce(secondJump * Vector2.up, ForceMode2D.Impulse);
+                canJump = false;
+            }
         }
-        else
-        {
-            playerBody.AddForce(secondJump * Vector2.up, ForceMode2D.Impulse);
-        }
-
     }
 
     void PlayerDash()
@@ -148,7 +167,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.rigidbody.position.y < playerBody.position.y)
+        if(collision.gameObject.transform.position.y < playerBody.position.y)
         {
             canJump = true;
             jumping = false;
