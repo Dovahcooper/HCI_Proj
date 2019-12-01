@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     public AnalogInput controllerX;
     public DigitalInput controllerButton;
 
-    private bool contBut;
+    public bool contBut;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        Debug.Log("Arduino Connected: " + controller.connected);
+
         if (controller.connected)
         {
             ArduinoInputs();
@@ -54,7 +56,7 @@ public class Player : MonoBehaviour
     
     void KeyboardInputs()
     {
-        KeyboardMovement(move_input);
+        KeyboardMovement(ref move_input);
         if(Input.GetKeyDown(KeyCode.Space))
         {
             PlayerJump();
@@ -68,7 +70,7 @@ public class Player : MonoBehaviour
 
     void ControllerInputs()
     {
-        ControllerMovement(move_input);
+        ControllerMovement(ref move_input);
         if(XInput.GetKeyPressed(0, (int)Buttons.A))
         {
             PlayerJump();
@@ -82,7 +84,7 @@ public class Player : MonoBehaviour
 
     void ArduinoInputs()
     {
-        ArduinoMovement(move_input);
+        ArduinoMovement(ref move_input);
         
         if(!contBut && controllerButton.Value)
         {
@@ -95,34 +97,36 @@ public class Player : MonoBehaviour
         contBut = controllerButton.Value;
     }
 
-    void KeyboardMovement(Vector2 moveInput)
+    void KeyboardMovement(ref Vector2 moveInput)
     {
         moveInput.x = Input.GetAxis("Horizontal");
         moveInput.y = 0f;
 
-        MovePlayer(moveInput);
+        MovePlayer(ref moveInput);
     }
 
-    void ControllerMovement(Vector2 moveInput)
+    void ControllerMovement(ref Vector2 moveInput)
     {
         moveInput.x = XInput.GetLeftX();
         moveInput.y = 0f;
 
-        MovePlayer(moveInput);
+        MovePlayer(ref moveInput);
     }
 
-    void ArduinoMovement(Vector2 moveInput)
+    void ArduinoMovement(ref Vector2 moveInput)
     {
-        if(controllerX.Value < 0.48f || controllerX.Value > 0.52f)
+        if (controllerX.Value < 0.45f || controllerX.Value > 0.55f)
         {
             moveInput.x = (controllerX.Value - 0.5f) * -2f;
         }
+        else
+            moveInput.x = 0f;
         moveInput.y = 0f;
 
-        MovePlayer(moveInput);
+        MovePlayer(ref moveInput);
     }
 
-    void MovePlayer(Vector2 moveInput)
+    void MovePlayer(ref Vector2 moveInput)
     {
         playerBody.velocity = moveInput * speed * Time.fixedDeltaTime;
 
@@ -142,14 +146,14 @@ public class Player : MonoBehaviour
         {
             if (!jumping)
             {
-                playerBody.velocity += secondJump * Vector2.up;
-                //playerBody.AddForce(firstJump * Vector2.up, ForceMode2D.Impulse);
+                //playerBody.velocity += secondJump * Vector2.up;
+                playerBody.AddForce(secondJump * Vector2.up, ForceMode2D.Impulse);
                 jumping = true;
             }
             else
             {
-                playerBody.velocity += firstJump * Vector2.up;
-                //playerBody.AddForce(secondJump * Vector2.up, ForceMode2D.Impulse);
+                //playerBody.velocity += firstJump * Vector2.up;
+                playerBody.AddForce(firstJump * Vector2.up, ForceMode2D.Impulse);
                 canJump = false;
             }
         }
@@ -159,9 +163,9 @@ public class Player : MonoBehaviour
     {
         if (jumping)
         {
-            Vector2 tempVec = new Vector2(40f * move_input.x, 0f);
+            Vector2 tempVec = new Vector2(170f * move_input.x, 0f);
 
-            playerBody.velocity = tempVec;
+            playerBody.velocity += tempVec;
         }
     }
 

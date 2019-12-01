@@ -244,22 +244,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+    x: 22
+    y: 45
+    width: 113
+    height: 79
   nodes:
   - name: baudrate
-    text: 115200 bps
+    text: 9600 bps
     nodeType: 0
     objectTarget: {fileID: 0}
     tooltip: Serial Baudrate Speed
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 22
+      y: 65
+      width: 113
+      height: 18
     updated: 1
   - name: CommSocket
     text: CommSocket
@@ -268,10 +268,10 @@ MonoBehaviour:
     tooltip: CommSocket
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 22
+      y: 83
+      width: 113
+      height: 18
     updated: 1
   - name: CommSerial
     text: CommSerial
@@ -280,15 +280,18 @@ MonoBehaviour:
     tooltip: CommSerial
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 22
+      y: 101
+      width: 113
+      height: 18
     updated: 1
-  foundDevices: []
+  foundDevices:
+  - name: COM3
+    address: //./COM3
+    args: []
   device:
-    name: 
-    address: 
+    name: COM3
+    address: //./COM3
     args: []
   OnOpen:
     m_PersistentCalls:
@@ -330,7 +333,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Ardunity.CommDeviceEvent, ArdunityCore, Version=1.0.6426.30151, Culture=neutral,
       PublicKeyToken=null
-  baudrate: 115200
+  baudrate: 9600
   dtrReset: 1
 --- !u!114 &424952687
 MonoBehaviour:
@@ -345,34 +348,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+    x: 163
+    y: 45
+    width: 120
+    height: 79
   nodes:
   - name: stream
-    text: Serial (115200 bps)
+    text: Serial (9600 bps)
     nodeType: 0
     objectTarget: {fileID: 0}
     tooltip: Arduino Stream Class
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 163
+      y: 65
+      width: 120
+      height: 18
     updated: 1
   - name: CommSocket
     text: CommSocket
     nodeType: 2
-    objectTarget: {fileID: 0}
+    objectTarget: {fileID: 424952686}
     tooltip: CommSocket
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 163
+      y: 83
+      width: 120
+      height: 18
     updated: 1
   - name: ArdunityApp
     text: ArdunityApp
@@ -381,16 +384,16 @@ MonoBehaviour:
     tooltip: ArdunityApp
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 163
+      y: 101
+      width: 120
+      height: 18
     updated: 1
   timeoutSec: 5
   streamClass: 0
   filterStream: 0
   bypassStream: 0
-  baudrate: 115200
+  baudrate: 9600
   rxPin: 0
   txPin: 0
   bypassBaudrate: 115200
@@ -555,10 +558,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+    x: 359
+    y: 27
+    width: 105
+    height: 133
   nodes:
   - name: gameObject
     text: LeftStick
@@ -567,22 +570,22 @@ MonoBehaviour:
     tooltip: GameObject
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 359
+      y: 47
+      width: 105
+      height: 18
     updated: 1
   - name: id
-    text: 'ID: 0'
+    text: 'ID: 1'
     nodeType: 0
     objectTarget: {fileID: 0}
     tooltip: Controller ID
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 359
+      y: 65
+      width: 105
+      height: 18
     updated: 1
   - name: pin
     text: 'Pin: A0'
@@ -591,22 +594,22 @@ MonoBehaviour:
     tooltip: Arduino Analog Pin
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 359
+      y: 83
+      width: 105
+      height: 18
     updated: 1
   - name: owner
     text: Owner
     nodeType: 2
-    objectTarget: {fileID: 0}
+    objectTarget: {fileID: 424952687}
     tooltip: ArdunityApp
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 359
+      y: 101
+      width: 105
+      height: 18
     updated: 1
   - name: Value
     text: Value
@@ -615,10 +618,10 @@ MonoBehaviour:
     tooltip: Input<float>
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 359
+      y: 119
+      width: 105
+      height: 18
     updated: 1
   - name: AnalogInput
     text: AnalogInput
@@ -627,12 +630,12 @@ MonoBehaviour:
     tooltip: AnalogInput
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 359
+      y: 137
+      width: 105
+      height: 18
     updated: 1
-  id: 0
+  id: 1
   pin: 0
   OnValueChanged:
     m_PersistentCalls:
@@ -1026,6 +1029,7 @@ MonoBehaviour:
   controller: {fileID: 424952687}
   controllerX: {fileID: 741112474}
   controllerButton: {fileID: 1709413270}
+  contBut: 0
 --- !u!4 &1587018610
 Transform:
   m_ObjectHideFlags: 0
@@ -1065,7 +1069,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1618464407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.5, y: 0.6, z: 0}
+  m_LocalPosition: {x: 32.33, y: -2.54, z: 0}
   m_LocalScale: {x: 57.50078, y: 57.50078, z: 57.50078}
   m_Children: []
   m_Father: {fileID: 2026431615}
@@ -1184,10 +1188,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windowRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
+    x: 357
+    y: 496
+    width: 116
+    height: 151
   nodes:
   - name: gameObject
     text: PlatformingButton
@@ -1196,34 +1200,34 @@ MonoBehaviour:
     tooltip: GameObject
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 516
+      width: 116
+      height: 18
     updated: 1
   - name: id
-    text: 'ID: 0'
+    text: 'ID: 3'
     nodeType: 0
     objectTarget: {fileID: 0}
     tooltip: Controller ID
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 534
+      width: 116
+      height: 18
     updated: 1
   - name: pin
-    text: 'Pin: 0'
+    text: 'Pin: 3'
     nodeType: 0
     objectTarget: {fileID: 0}
     tooltip: Arduino Digital Pin
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 552
+      width: 116
+      height: 18
     updated: 1
   - name: pullup
     text: 'Pullup: True'
@@ -1232,22 +1236,22 @@ MonoBehaviour:
     tooltip: Use Internal pullup
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 570
+      width: 116
+      height: 18
     updated: 1
   - name: owner
     text: Owner
     nodeType: 2
-    objectTarget: {fileID: 0}
+    objectTarget: {fileID: 424952687}
     tooltip: ArdunityApp
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 588
+      width: 116
+      height: 18
     updated: 1
   - name: Value
     text: Value
@@ -1256,10 +1260,10 @@ MonoBehaviour:
     tooltip: Input<bool>
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 606
+      width: 116
+      height: 18
     updated: 1
   - name: DigitalInput
     text: DigitalInput
@@ -1268,13 +1272,13 @@ MonoBehaviour:
     tooltip: DigitalInput
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 0
-      height: 0
+      x: 357
+      y: 624
+      width: 116
+      height: 18
     updated: 1
-  id: 0
-  pin: 0
+  id: 3
+  pin: 3
   pullup: 1
   OnValueChanged:
     m_PersistentCalls:
@@ -1289,6 +1293,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1841964016}
+  - component: {fileID: 1841964017}
   m_Layer: 0
   m_Name: JoystickL
   m_TagString: Untagged
@@ -1310,6 +1315,126 @@ Transform:
   m_Father: {fileID: 424952688}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1841964017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1841964015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa96ec01766e32498f6b1b6eb4feea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowRect:
+    serializedVersion: 2
+    x: 549
+    y: 99
+    width: 167
+    height: 169
+  nodes:
+  - name: analogHorizontal
+    text: Horizontal(analog)
+    nodeType: 2
+    objectTarget: {fileID: 741112474}
+    tooltip: Input<float>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 119
+      width: 167
+      height: 18
+    updated: 1
+  - name: analogVertical
+    text: Vertical(analog)
+    nodeType: 2
+    objectTarget: {fileID: 0}
+    tooltip: Input<float>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 137
+      width: 167
+      height: 18
+    updated: 1
+  - name: digitalUp
+    text: Up(digital)
+    nodeType: 2
+    objectTarget: {fileID: 0}
+    tooltip: Input<bool>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 155
+      width: 167
+      height: 18
+    updated: 1
+  - name: digitalDown
+    text: Down(digital)
+    nodeType: 2
+    objectTarget: {fileID: 0}
+    tooltip: Input<bool>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 173
+      width: 167
+      height: 18
+    updated: 1
+  - name: digitalRight
+    text: Right(digital)
+    nodeType: 2
+    objectTarget: {fileID: 0}
+    tooltip: Input<bool>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 191
+      width: 167
+      height: 18
+    updated: 1
+  - name: digitalLeft
+    text: Left(digital)
+    nodeType: 2
+    objectTarget: {fileID: 0}
+    tooltip: Input<bool>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 209
+      width: 167
+      height: 18
+    updated: 1
+  - name: axis
+    text: Axis Vector
+    nodeType: 1
+    objectTarget: {fileID: 0}
+    tooltip: Input<Vector2>
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 227
+      width: 167
+      height: 18
+    updated: 1
+  - name: AxisInput
+    text: AxisInput
+    nodeType: 1
+    objectTarget: {fileID: 0}
+    tooltip: AxisInput
+    rect:
+      serializedVersion: 2
+      x: 549
+      y: 245
+      width: 167
+      height: 18
+    updated: 1
+  minCenterHorizontal: 0.45
+  maxCenterHorizontal: 0.55
+  minCenterVertical: 0.45
+  maxCenterVertical: 0.55
+  invertHorizontal: 0
+  invertVertical: 0
 --- !u!1 &2026431614
 GameObject:
   m_ObjectHideFlags: 0
